@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[测试]]></title>
     <url>%2F%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[一级标题二级标题三级标题 代码当然是可以的 12345#include &lt;iostream&gt;using namespace std;int main()&#123; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[一级标题二级标题三级标题 代码当然是可以的 12345#include &lt;iostream&gt;using namespace std;int main()&#123; return 0;&#125; latex qwq $1$]]></content>
       <categories>
         <category>测试文档</category>
       </categories>
