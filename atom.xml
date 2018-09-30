@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henrytbtrue.github.io/"/>
-  <updated>2018-09-23T03:58:27.198Z</updated>
+  <updated>2018-09-30T04:27:01.099Z</updated>
   <id>https://henrytbtrue.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>题解 Luogu P3472 MAF-Mafia</title>
+    <link href="https://henrytbtrue.github.io/%E9%A2%98%E8%A7%A3-Luogu-P3472-MAF-Mafia/"/>
+    <id>https://henrytbtrue.github.io/题解-Luogu-P3472-MAF-Mafia/</id>
+    <published>2018-09-30T04:27:01.000Z</published>
+    <updated>2018-09-30T04:27:01.099Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ZROI-9.23-搜索</title>
