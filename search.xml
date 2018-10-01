@@ -15,6 +15,9 @@
     <title><![CDATA[题解 Luogu P3472 MAF-Mafia]]></title>
     <url>%2F%E9%A2%98%E8%A7%A3-Luogu-P3472-MAF-Mafia%2F</url>
     <content type="text"><![CDATA[$$\text{ Luogu P3472 MAF-Mafia }$$原题 题目描述：给定n个神枪手，每个神枪手瞄准一个人，以一定顺序开枪，问最少和最多死多少人 Solution: 最少的情况是每个联通块只有入度为零的点活下来（如果是环就留一个人）；最多的情况就是从入度为零的开始到结束。 注意自环！ AC Code:吴老师那玄学的码风 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192#include &lt;cstdio&gt;#include &lt;cmath&gt;#include &lt;algorithm&gt;#include &lt;cstring&gt;#include &lt;queue&gt;using namespace std;int const N=2000001;int n,used[N],p[N],s[N],ind[N],size[N];int head,tail,q[N],d[N];bool f[N];int dfs(int x,int y)&#123; used[x]=y; if (used[p[x]]==0) dfs(p[x],y); used[x]=used[p[x]];&#125;int main()&#123; freopen("mafia.in","r",stdin); freopen("mafia.out","w",stdout); scanf("%d\n",&amp;n); for (int i=1;i&lt;=n;i++) &#123; scanf("%d",&amp;p[i]); ind[p[i]]++; &#125; int T=0; for (int i=1;i&lt;=n;i++) if (used[i]==0) dfs(i,++T); for (int i=1;i&lt;=T;i++) s[i]=-1; for (int i=1;i&lt;=n;i++) s[used[i]]=0; for (int i=1;i&lt;=n;i++) if (ind[i]==0) s[used[i]]++; int Mans=0,mans=0; for (int i=1;i&lt;=n;i++) size[used[i]]++; for (int i=1;i&lt;=T;i++) if ((s[i]==0) &amp;&amp; (size[i]&gt;1)) Mans++; else if (s[i]&gt;0) Mans+=s[i]; for (int i=1;i&lt;=T;i++) s[i]=0; for (int i=1;i&lt;=n;i++) s[used[i]]++; head=1; tail=0; for (int i=1;i&lt;=n;i++) if (ind[i]==0) &#123; q[++tail]=i; f[i]=true; &#125; while (head&lt;=tail) &#123; int x=q[head]; s[used[x]]--; if (d[x]==1) &#123; mans++; &#125; if (d[x]==0)&#123; d[p[x]]=1; &#125; ind[p[x]]--; if ((ind[p[x]]==0) &amp;&amp; (!f[p[x]])) &#123; q[++tail]=p[x]; f[p[x]]=true; &#125; head++; &#125; for (int i=1;i&lt;=n;i++) if ((!f[i]) &amp;&amp; (d[i]==1)) &#123; q[++tail]=i; f[i]=true; &#125; while (head&lt;=tail) &#123; int x=q[head]; s[used[x]]--; if (d[x]==1) &#123; mans++; &#125; if (d[x]==0)&#123; d[p[x]]=1; &#125; ind[p[x]]--; if ((ind[p[x]]==0) &amp;&amp; (!f[p[x]])) &#123; q[++tail]=p[x]; f[p[x]]=true; &#125; head++; &#125; for (int i=1;i&lt;=T;i++) &#123; mans+=(1+s[i])/2; &#125; printf("%d %d\n",mans,n-Mans); return 0; &#125; 完结撒花✿✿ヽ(°▽°)ノ✿！]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
       <tags>
         <tag>题解</tag>
         <tag>Luogu</tag>
@@ -54,10 +57,5 @@
       <tags>
         <tag>测试</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
