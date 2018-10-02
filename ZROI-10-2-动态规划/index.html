@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ZROI,笔记," />
 
 
 
@@ -81,14 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://henrytbtrue.github.io/tags/index.html">
+<meta name="description" content="$$\text{ 动态规划1 }$$ 引入给出一个$n$个元素的序列$a$，找出其中出现了超过一半次数的个数，$n$为奇数。  Task #1：$1\leq n\leq 10^5$，$128$MB Task #2：$1\leq n\leq 10^7$，$128$MB Task #3：$1\leq n\leq 10^7$，$4$MB   例题部分排队买票 有$n$个人排队买票，窗口一次可以卖出一张票">
+<meta name="keywords" content="ZROI,笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZROI 10.2 动态规划">
+<meta property="og:url" content="https://henrytbtrue.github.io/ZROI-10-2-动态规划/index.html">
 <meta property="og:site_name" content="henrytb&#39;s blog">
+<meta property="og:description" content="$$\text{ 动态规划1 }$$ 引入给出一个$n$个元素的序列$a$，找出其中出现了超过一半次数的个数，$n$为奇数。  Task #1：$1\leq n\leq 10^5$，$128$MB Task #2：$1\leq n\leq 10^7$，$128$MB Task #3：$1\leq n\leq 10^7$，$4$MB   例题部分排队买票 有$n$个人排队买票，窗口一次可以卖出一张票">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T12:05:57.824Z">
+<meta property="og:updated_time" content="2018-10-02T08:00:13.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="ZROI 10.2 动态规划">
+<meta name="twitter:description" content="$$\text{ 动态规划1 }$$ 引入给出一个$n$个元素的序列$a$，找出其中出现了超过一半次数的个数，$n$为奇数。  Task #1：$1\leq n\leq 10^5$，$128$MB Task #2：$1\leq n\leq 10^7$，$128$MB Task #3：$1\leq n\leq 10^7$，$4$MB   例题部分排队买票 有$n$个人排队买票，窗口一次可以卖出一张票">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://henrytbtrue.github.io/tags/"/>
+  <link rel="canonical" href="https://henrytbtrue.github.io/ZROI-10-2-动态规划/"/>
 
 
 
 
 
-  <title>tags | henrytb's blog</title>
+  <title>ZROI 10.2 动态规划 | henrytb's blog</title>
   
 
 
@@ -295,40 +299,233 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://henrytbtrue.github.io/ZROI-10-2-动态规划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="henrytb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="henrytb's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 6 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Luogu/" style="font-size: 12px; color: #ccc">Luogu</a> <a href="/tags/ZROI/" style="font-size: 30px; color: #111">ZROI</a> <a href="/tags/测试/" style="font-size: 12px; color: #ccc">测试</a> <a href="/tags/笔记/" style="font-size: 30px; color: #111">笔记</a> <a href="/tags/算法详解/" style="font-size: 12px; color: #ccc">算法详解</a> <a href="/tags/题解/" style="font-size: 12px; color: #ccc">题解</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">ZROI 10.2 动态规划</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T13:01:50+08:00">
+                2018-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">OI笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h1 id="text-动态规划1"><a href="#text-动态规划1" class="headerlink" title="$$\text{ 动态规划1 }$$"></a>$$\text{ 动态规划1 }$$</h1><hr>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>给出一个$n$个元素的序列$a$，找出其中出现了超过一半次数的个数，$n$为奇数。</p>
+<ul>
+<li>Task #1：$1\leq n\leq 10^5$，$128$MB</li>
+<li>Task #2：$1\leq n\leq 10^7$，$128$MB</li>
+<li>Task #3：$1\leq n\leq 10^7$，$4$MB</li>
+</ul>
+<hr>
+<h2 id="例题部分"><a href="#例题部分" class="headerlink" title="例题部分"></a>例题部分</h2><h3 id="排队买票"><a href="#排队买票" class="headerlink" title="排队买票"></a>排队买票</h3><ul>
+<li>有$n$个人排队买票，窗口一次可以卖出一张票或相邻两个排队的人的两张票。</li>
+<li>给出每个人单独买票的时间$s_i$，和第$i$个人与第$i-1$个人的两张票一起买的时间$d_i$，求最小时间。</li>
+</ul>
+<p>设$f_i$为前$i$个人的最小代价。</p>
+<p>转移方程：$f_i=\min\{f_{i-1}+s_i,f_{i-2}+d_i\}$</p>
+<hr>
+<h3 id="Monkey-and-Banana"><a href="#Monkey-and-Banana" class="headerlink" title="Monkey and Banana"></a>Monkey and Banana</h3><ul>
+<li><p>有$n$种长方体，每个长方体三维的长度用一个三元组$(x_i,y_i,z_i)$表示，长方体可以随意翻动，每种长方体都有无限个。</p>
+</li>
+<li><p>叠长方体的规则是：放在上面的长方体的长、宽严格小于放在下面的。求最高能放多少。</p>
+</li>
+</ul>
+<p>先把一种长方体固定长宽高变成6种。然后给每种长方体按长和宽排序。求$LIS$即可。</p>
+<hr>
+<h3 id="免费馅饼"><a href="#免费馅饼" class="headerlink" title="免费馅饼"></a>免费馅饼</h3><ul>
+<li>一根0~10的数轴，一开始你站在$5$的位置。</li>
+<li>天上开始掉一些馅饼，一共$n$个，你只有在馅饼落到地面时才可以接到这个馅饼。每个时刻你的移动速度为$1$，求你最多接到多少个馅饼。</li>
+</ul>
+<p>DP啦~</p>
+<p>$f_{i,j}$表示第$i$个时刻在第$j$个位置能得到的最多的馅饼。</p>
+<p>转移方程：$f_{i,j}=\max\{f_{i-1,j-1},f_{i-1,j+1},f_{i-1,j}\}+cnt_{i,j}$，其中$cnt_{i,j}$表示第$i$个时刻，第$j$个位置掉下来的馅饼数。</p>
+<blockquote>
+<p>如何初始化？</p>
+</blockquote>
+<p>初始化：$f_{0,i}=-inf$，其中$i=$ $0$~$4$，$6$~$10$。</p>
+<hr>
+<h3 id="LCS问题（最长公共子序列）"><a href="#LCS问题（最长公共子序列）" class="headerlink" title="LCS问题（最长公共子序列）"></a>LCS问题（最长公共子序列）</h3><p>给定两个字符串$a,b$，求它们的LCS长度。</p>
+<p>$f_{i,j}$表示$a$的前$i$项与$b$的前$j$项的LCS长度。</p>
+<p>转移方程：</p>
+<p>$$<br>f_{i,j}=\left\{<br>\begin{aligned}<br>a_i=b_j\qquad\quad   f_{i-1,j-1}+1\\<br>a_i\neq b_j  \max\{f_{i-1,j},f_{i,j-1}\}<br>\end{aligned}<br>\right.<br>$$</p>
+<hr>
+<h3 id="Treats-for-the-Cows"><a href="#Treats-for-the-Cows" class="headerlink" title="Treats for the Cows"></a>Treats for the Cows</h3><ul>
+<li>有一个$n$个元素的数组$a$，每次可以从最左边或最右边取一个元素。</li>
+<li>如果一个元素是第$x$天取出来的，它产生的贡献为这个元素的值$\times x$。最大化总贡献。</li>
+</ul>
+<p>用$f_{i,j}$表示总共取了$i$个，从左边取了$j$个的最大贡献。</p>
+<p>则$f_{i,j}=\max\{f_{i-1,j-1}+i\times a_j,f_{i-1,j}+i\times a_{n-i+j+1}\}$</p>
+<blockquote>
+<p>初始化？</p>
+</blockquote>
+<p>不需要初始化。</p>
+<blockquote>
+<p>最后答案？</p>
+</blockquote>
+<p>$\max\{f_{n,0\sim n}\}$。</p>
+<hr>
+<h3 id="免费馅饼升级版"><a href="#免费馅饼升级版" class="headerlink" title="免费馅饼升级版"></a>免费馅饼升级版</h3><p>一个$n\times n$的棋盘，有若干个馅饼，第$i$个馅饼会在$t_i$时刻掉落在$(r_i,c_i)$上。你$0$时刻可以选择从任意格子出发，每个时刻可以向四个方向移动一格，也可以不动。最大化捡到的馅饼个数。</p>
+<p>先对输入的馅饼序列按照$t_i$排序。</p>
+<p>用$f_i$表示上一个接到的是第$i$个馅饼。</p>
+<p>转移方程：若$t_j-t_i\leq |r_i-r_j|+|c_i-c_j|$，$f_j=f_i+1$。</p>
+<hr>
+<h1 id="完结撒花✿✿ヽ-°▽°-ノ✿！"><a href="#完结撒花✿✿ヽ-°▽°-ノ✿！" class="headerlink" title="完结撒花✿✿ヽ(°▽°)ノ✿！"></a>完结撒花✿✿ヽ(°▽°)ノ✿！</h1><p>qwq~</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ZROI/" rel="tag"># ZROI</a>
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ZROI-10-2-高精度/" rel="next" title="ZROI 10.2 高精度">
+                <i class="fa fa-chevron-left"></i> ZROI 10.2 高精度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -337,6 +534,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDA0NS8xNjU3Mg"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -357,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -456,6 +671,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#text-动态规划1"><span class="nav-number">1.</span> <span class="nav-text">$$\text{ 动态规划1 }$$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入"><span class="nav-number">1.1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题部分"><span class="nav-number">1.2.</span> <span class="nav-text">例题部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排队买票"><span class="nav-number">1.2.1.</span> <span class="nav-text">排队买票</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Monkey-and-Banana"><span class="nav-number">1.2.2.</span> <span class="nav-text">Monkey and Banana</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免费馅饼"><span class="nav-number">1.2.3.</span> <span class="nav-text">免费馅饼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LCS问题（最长公共子序列）"><span class="nav-number">1.2.4.</span> <span class="nav-text">LCS问题（最长公共子序列）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Treats-for-the-Cows"><span class="nav-number">1.2.5.</span> <span class="nav-text">Treats for the Cows</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#免费馅饼升级版"><span class="nav-number">1.2.6.</span> <span class="nav-text">免费馅饼升级版</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完结撒花✿✿ヽ-°▽°-ノ✿！"><span class="nav-number">2.</span> <span class="nav-text">完结撒花✿✿ヽ(°▽°)ノ✿！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -649,6 +880,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -995,6 +1237,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
