@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZROI 10.4 栈与队列]]></title>
+    <url>%2FZROI-10-4-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[$$\text{ 栈与队列 }$$ 栈先进后出，支持$push$和$pop$两种操作。1234//手写栈，s[0]为栈内元素个数。int s[N];s[++s[0]]=a; //入栈s[0]--; //出栈 STL大法吼！ 1234567//STL的栈stack&lt;int&gt; s;s.push(a); //pushs.top(); //取栈顶元素s.pop(); //pops.empty(); //判空s.size(); //栈大小 出栈序列 $1\sim n$的排列，共有$\frac{C^n_{2n}}{n+1}$或$(C^n_{2n}-C^{n-1}_{2n})$种合法的出栈序列（卡特兰数）。 一个栈的入栈序列为$1,2,3…n$，已知第二个出栈的元素是$n$，求最后有多少种合法的出栈序列。 $n-1$种！ 单调栈 元素单调 用法：一个长度为$n$的序列$a$，你需要对于每个元素找到它左边第一个比它大的元素的位置。 暴力$O(n^2)$，乱搞$O(nlogn)$。 维护一个单调递减的单调栈即可。时间复杂度$O(n)$。 $$\text{ Largest Rectangle in Histogram }$$ 有$n$个宽度为$1$的长度为$a_i$的矩形放在地上，你需要计算最大子矩形面积。 $n\leq 10^6$ 单调栈找出每一个元素往左第一个比它小的和往右第一个比它小的。 再$for$一遍找答案。 $$\text{ Maximal Rectangle }$$ 给出一个$n\times m$的01矩阵，计算全$1$最大子矩形面积。 $n,m\leq 5000$ 枚举全$1$最大子矩形下边界，然后就转化成了上一题。 设$f_{i,j}$表示$(i,j)$往上有多少个$1$。 $$f_{i,j}=\left\{\begin{aligned}0\qquad a_{i,j}=0 \\f_{i-1,j}+1 \qquad a_{i,j}=1\end{aligned}\right.$$ 1234560 1 1 0 1 0 11 1 1 0 1 0 01 1 1 1 1 1 1------------- 下边界0 0 1 1 1 0 11 1 0 1 0 1 0 求 1230 1 1 0 1 0 11 1 1 0 1 0 01 1 1 1 1 1 1 中的最大全$1$子矩形即可。 就是上一题。 我写代码常数太大，卡不过去，怎么办？ 凉拌 $$\text{ 小例题 }$$ 一个长度为$n$的序列$a$，你需要计算$$\sum^n_{l=1}\sum^n_{r=l}(\max^r_{k=l}A_i-\min^r_{k=l}A_i)$$ $n\leq 10^6$。 枚举区间最大值的位置。 队列 先进先出 STL大法吼！ 1234567queue&lt;int&gt; q;q.empty(); //判空q.push(); //pushq.size(); //大小q.front(); //队头q.back(); //队尾q.pop(); //pop 单调队列 队列中的元素单调 应用：一个长度为$n$的序列，输出其中每$m$个连续子段的最大元素。 12345678int he,ta=1;q[1]=1;for(int i=2;i&lt;=n;i++)&#123; for(;he&lt;=ta&amp;&amp;q[he]&lt;=i-m;)he++; for(;he&lt;=ta&amp;&amp;a[q[ta]]&lt;=a[i];)--ta; q[++ta]=i; if(i&gt;=m)ans=max(ans,max(a[q[he]],a[i]));&#125; 应用：一个长度为$n$的序列，输出其中长度不超过$m$的最大连续子段和。 前缀和 $$b_i=\sum^i_{j=1}a_i$$ 这就是求固定$r$，在$r-m+1\sim r$之间找最小。 完结撒花✿✿ヽ(°▽°)ノ✿！]]></content>
+      <categories>
+        <category>OI笔记</category>
+        <category>ZROI</category>
+      </categories>
+      <tags>
+        <tag>ZROI</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ZROI 10.3 二分]]></title>
     <url>%2FZROI-10-3-%E4%BA%8C%E5%88%86%2F</url>
     <content type="text"><![CDATA[$$\text{ 二分答案 }$$ 二分答案思想定义一个$check()$函数，返回$true$即答案可以$\geq mid$，否则答案$\leq mid$。 Problem: $A1$ 一个长度为$n$的序列$a$，你有$m$次操作的机会，每次操作是将其中连续的$w$个元素增加$1$。 最大化最终序列的最小值。 $1\leq w\leq n\leq 10^5,1\leq m\leq 10^5$ 二分答案最终序列的最小值。 二分将问题转化成：$\leq m$次操作，每次操作可以将其中连续的$w$个元素增加$1$，使得序列中的所有数都$\geq x$。 贪心策略：当一个数$&lt; x$时，以这个数为左端点进行操作直到这个数$= x$。 依然不能通过qwq 正解：维护一个差分序列！ Problem: $A2$ 一共有$n$面墙，初始有$a_i$个弓箭手在第$i$面墙上，一个在$i$位置的弓箭手可以保护$|i-j|\leq r$的所有墙$j$。 你现在可以增派$k$个弓箭手并且任意分配它们的位置。你需要最大化被数量最少的弓箭手保护的墙被弓箭手保护的数量。 $n\leq 5\times 10^5,0\leq r\leq n,0\leq k\leq 10^{18},0\leq a_i\leq 10^9$。 这个问题完全可以转化为上一个问题的qwq~ 将一个弓箭手看作一个区间即可。 Problem: $A3$ 给出一棵$n$个节点的树，你需要用一些路径去覆盖这棵树上所有的边，每条边都需要被恰好一条路径覆盖。 你需要计算出最少的路径条数和在路径条数最少的情况下最长的路径最短可以是多少。 第一问：设奇度点个数为$cnt$，则答案为$\frac{cnt}{2}$。 证明略。 第二问：二分最长的路径。 Problem: $B1$ 给出一个长度为$n$的序列$a$，可以修改不超过$k$个元素的值，你需要最小化$\max |a_i-a_{i+1}|$。 $n\leq 2000,-10^9\leq a_i\leq 10^9$。 二分答案后问题变成：最小化修改次数。 从不修改次数的角度来看：最大化不修改的数的个数。 设$f_i$表示$a_i$不改的情况下$1\sim i$最多可以有多少个不用修改。 则$f_i+1\rightarrow f_i(mid\times (i-j)\leq |a_i-a_j|)$ 想要提出意见？请戳下方评论区↓！ QAQ~]]></content>
