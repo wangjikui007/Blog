@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henrytbtrue.github.io/"/>
-  <updated>2018-10-04T06:46:30.009Z</updated>
+  <updated>2018-10-04T07:43:35.492Z</updated>
   <id>https://henrytbtrue.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="https://henrytbtrue.github.io/%E8%AE%A1%E8%92%9C%E5%AE%A2-%E6%95%B0%E8%AE%BA%E4%B8%8E%E5%9F%BA%E7%A1%80%E6%95%B0%E5%AD%A6-gcd/"/>
     <id>https://henrytbtrue.github.io/计蒜客-数论与基础数学-gcd/</id>
     <published>2018-10-04T06:18:53.000Z</published>
-    <updated>2018-10-04T06:46:30.009Z</updated>
+    <updated>2018-10-04T07:43:35.492Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="text-gcd与lcm"><a href="#text-gcd与lcm" class="headerlink" title="$$\text{ gcd与lcm }$$"></a>$$\text{ gcd与lcm }$$</h1><hr><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol><li>设$a$和$b$为两个不为$0$的整数，如果$d | a$且$d | b$，则称$d$为$a,b$的公约数。而$a,b$中公约数中最大的被称为$a,b$的最大公约数，记作$gcd(a,b)$。</li><li>设$a$和$b$为两个不为$0$的整数，如果$a | d$且$b | d$，则称$d$为$a,b$的公倍数。而$a,b$中公倍数中最小的被称为$a,b$的最小公倍数，记作$lcm(a,b)$。</li></ol><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ol><li>若$a | m$，$b | m$，则$gcd(a,b) | m$。</li><li>若$d | a$，$d | b$，则$d | lcm(a,b)$。</li><li>$lcm(a,b)=\frac{ab}{gcd(a,b)}$。</li><li>设$m,a,b$是正整数，则$lcm(ma,mb)=m\times lcm(a,b)$</li><li>若$m$是非零整数$a_1,a_2,a_3…a_n$的公倍数，则$lcm(a_1,a_2,a_3…a_n)|m$</li></ol><hr><h2 id="辗转相除法求-gcd"><a href="#辗转相除法求-gcd" class="headerlink" title="辗转相除法求$gcd$"></a>辗转相除法求$gcd$</h2><p>这个算法用来快速计算$2$个整数的最大公约数。</p><p>$\gcd(a,b)=\gcd(b,a\mod b)$。</p><p>Code:</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p>emmm…完结</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="text-gcd与lcm"><a href="#text-gcd与lcm" class="headerlink" title="$$\text{ gcd与lcm }$$"></a>$$\text{ gcd与lcm }$$</h1><hr><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol><li>设$a$和$b$为两个不为$0$的整数，如果$d | a$且$d | b$，则称$d$为$a,b$的公约数。而$a,b$中公约数中最大的被称为$a,b$的最大公约数，记作$gcd(a,b)$。</li><li><p>设$a$和$b$为两个不为$0$的整数，如果$a | d$且$b | d$，则称$d$为$a,b$的公倍数。而$a,b$中公倍数中最小的被称为$a,b$的最小公倍数，记作$lcm(a,b)$。</p><a id="more"></a><h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2></li><li><p>若$a | m$，$b | m$，则$gcd(a,b) | m$。</p></li><li>若$d | a$，$d | b$，则$d | lcm(a,b)$。</li><li>$lcm(a,b)=\frac{ab}{gcd(a,b)}$。</li><li>设$m,a,b$是正整数，则$lcm(ma,mb)=m\times lcm(a,b)$</li><li>若$m$是非零整数$a_1,a_2,a_3…a_n$的公倍数，则$lcm(a_1,a_2,a_3…a_n)|m$</li></ol><hr><h2 id="辗转相除法求-gcd"><a href="#辗转相除法求-gcd" class="headerlink" title="辗转相除法求$gcd$"></a>辗转相除法求$gcd$</h2><p>这个算法用来快速计算$2$个整数的最大公约数。</p><p>$\gcd(a,b)=\gcd(b,a\mod b)$。</p><p>Code:</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)<span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><p>emmm…完结</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
+      &lt;h1 id=&quot;text-gcd与lcm&quot;&gt;&lt;a href=&quot;#text-gcd与lcm&quot; class=&quot;headerlink&quot; title=&quot;$$\text{ gcd与lcm }$$&quot;&gt;&lt;/a&gt;$$\text{ gcd与lcm }$$&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;设$a$和$b$为两个不为$0$的整数，如果$d | a$且$d | b$，则称$d$为$a,b$的公约数。而$a,b$中公约数中最大的被称为$a,b$的最大公约数，记作$gcd(a,b)$。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设$a$和$b$为两个不为$0$的整数，如果$a | d$且$b | d$，则称$d$为$a,b$的公倍数。而$a,b$中公倍数中最小的被称为$a,b$的最小公倍数，记作$lcm(a,b)$。&lt;/p&gt;
     
     </summary>
     
