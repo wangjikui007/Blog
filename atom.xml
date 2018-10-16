@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://henrytbtrue.github.io/"/>
-  <updated>2018-10-16T13:34:52.643Z</updated>
+  <updated>2018-10-16T14:14:50.784Z</updated>
   <id>https://henrytbtrue.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Treap学习笔记</title>
+    <link href="https://henrytbtrue.github.io/Treap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://henrytbtrue.github.io/Treap学习笔记/</id>
+    <published>2018-10-16T13:46:14.000Z</published>
+    <updated>2018-10-16T14:14:50.784Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-二叉排序树"><a href="#1-二叉排序树" class="headerlink" title="1. 二叉排序树"></a>1. 二叉排序树</h1><p>二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。</p><a id="more"></a><p>BST的用法就是实现一个集合，支持<code>insert</code>，<code>erase</code>以及<code>find</code>（或<code>count</code>）操作。</p><p>其中查找珂以使用递归执行。假设要查找的元素为$x$，如果$x$比根节点小，则递归左子树，否则递归右子树。如果根节点与$x$相等，直接返回<code>true</code>即可，以此类推。</p><p>插入过程类似，只是如果二叉搜索树里已经有这个元素，插入失败（集合内不能有相同元素）。</p><p>可是同样的节点集合，可以构造出很多不同的BST，导致最坏时一棵二叉排序树可能会变成一条链！这个时间复杂度是不能接受的。</p><p>那如何维持BST的平衡？</p><blockquote><p>旋转！</p></blockquote><p>旋转操作如图：</p><p><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwaf6vk9vrj30kz0bajrj.jpg" alt=""></p><p><del>（自己画的，勿喷）</del></p><p>可是，该什么时候旋转呢？</p><p>这就是<code>Treap</code>的作用啦！</p><hr><h1 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-二叉排序树&quot;&gt;&lt;a href=&quot;#1-二叉排序树&quot; class=&quot;headerlink&quot; title=&quot;1. 二叉排序树&quot;&gt;&lt;/a&gt;1. 二叉排序树&lt;/h1&gt;&lt;p&gt;二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="OI笔记" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="自学" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/%E8%87%AA%E5%AD%A6/"/>
+    
+    
+      <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="自学" scheme="https://henrytbtrue.github.io/tags/%E8%87%AA%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>NOIP2018普及组初赛参赛感想</title>
@@ -110,9 +136,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
@@ -137,9 +163,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
@@ -168,9 +194,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
@@ -197,9 +223,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
@@ -273,9 +299,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
@@ -299,9 +325,9 @@
       <category term="ZROI" scheme="https://henrytbtrue.github.io/categories/OI%E7%AC%94%E8%AE%B0/ZROI/"/>
     
     
-      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
-    
       <category term="笔记" scheme="https://henrytbtrue.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="ZROI" scheme="https://henrytbtrue.github.io/tags/ZROI/"/>
     
   </entry>
   
