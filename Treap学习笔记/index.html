@@ -90,7 +90,7 @@
 <meta property="og:description" content="1. 二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwaf6vk9vrj30kz0bajrj.jpg">
-<meta property="og:updated_time" content="2018-10-16T14:14:50.784Z">
+<meta property="og:updated_time" content="2018-10-19T13:47:35.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Treap学习笔记">
 <meta name="twitter:description" content="1. 二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
@@ -429,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  246 字
+                  605 字
                 </span>
               
 
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -482,7 +482,20 @@
 <p>可是，该什么时候旋转呢？</p>
 <p>这就是<code>Treap</code>的作用啦！</p>
 <hr>
-<h1 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h1>
+<h1 id="2-用Treap实现STL中的set"><a href="#2-用Treap实现STL中的set" class="headerlink" title="2.用Treap实现STL中的set"></a>2.用Treap实现STL中的set</h1><p>Treap就是一棵拥有键值、优先级两种权值的树。用键值来看，这棵树是BST；用优先级来看，这棵树是堆。</p>
+<p>每个节点的优先级都是随机定义的以维护平衡。维护平衡的方式就是上面讲的旋转。</p>
+<p><del>总觉得代码里出现随机数很爽有木有</del></p>
+<p>Treap节点的定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">    Node* ch[<span class="number">2</span>];         <span class="comment">//左右子树</span></span><br><span class="line">    <span class="keyword">int</span> r;               <span class="comment">//优先级</span></span><br><span class="line">    <span class="keyword">int</span> v;               <span class="comment">//键值</span></span><br><span class="line">    Node(<span class="keyword">int</span> v):v(v)&#123;ch[<span class="number">0</span>]=ch[<span class="number">1</span>]=<span class="literal">NULL</span>;r=rand();&#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x)</span><span class="keyword">const</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==v)<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> x&lt;v?<span class="number">0</span>:<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面是旋转的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//d=0表示左旋，d=1表示右旋</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(Node* &amp;o,<span class="keyword">int</span> d)</span></span>&#123;</span><br><span class="line">    Node* k=o-&gt;ch[d^<span class="number">1</span>];o-&gt;ch[d^<span class="number">1</span>]=k-&gt;ch[d];k-&gt;ch[d]=o;o=k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于d等于0或1，d^1在d=0时就是1，d=1时就是0，因为速度快就这样写了。</p>
+<p>旋转可以形象地理解为把一个节点提起来，然后它的左（或右）子树就会掉下来。</p>
+<p>下面是插入，与BST类似，唯一的不同就是旋转维持平衡。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在以o为根的子树里插入键值x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Node* &amp;o,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o==<span class="literal">NULL</span>)o=<span class="keyword">new</span> Node(x);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> d=o-&gt;cmp(x);</span><br><span class="line">        insert(o-&gt;ch[d],x);<span class="keyword">if</span>(o-&gt;ch[d]-&gt;r&gt;o-&gt;r)rotate(o,d^<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h1><p>Treap还没有写删除和查找qwq</p>
+
       
     </div>
     
@@ -501,7 +514,7 @@
   <p><span>本文标题:</span><a href="/Treap学习笔记/">Treap学习笔记</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 henrytb 的个人博客">henrytb</a></p>
   <p><span>发布时间:</span>2018年10月16日 - 21:10</p>
-  <p><span>最后更新:</span>2018年10月16日 - 22:10</p>
+  <p><span>最后更新:</span>2018年10月19日 - 21:10</p>
   <p><span>原始链接:</span><a href="/Treap学习笔记/" title="Treap学习笔记">https://henrytbtrue.github.io/Treap学习笔记/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://henrytbtrue.github.io/Treap学习笔记/"  aria-label="复制成功！"></i></span>
   </p>
@@ -739,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-二叉排序树"><span class="nav-number">1.</span> <span class="nav-text">1. 二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续…"><span class="nav-number">2.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-二叉排序树"><span class="nav-number">1.</span> <span class="nav-text">1. 二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-用Treap实现STL中的set"><span class="nav-number">2.</span> <span class="nav-text">2.用Treap实现STL中的set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续…"><span class="nav-number">3.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
             
 
           </div>
@@ -1407,7 +1420,15 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":200},"mobile":{"show":false},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1424,13 +1445,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":200},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
