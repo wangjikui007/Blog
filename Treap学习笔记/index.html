@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="1. 二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
+<meta name="description" content="二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
 <meta name="keywords" content="笔记,自学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Treap学习笔记">
 <meta property="og:url" content="https://henrytbtrue.github.io/Treap学习笔记/index.html">
 <meta property="og:site_name" content="henrytb&#39;s blog">
-<meta property="og:description" content="1. 二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
+<meta property="og:description" content="二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwaf6vk9vrj30kz0bajrj.jpg">
-<meta property="og:updated_time" content="2018-10-19T13:47:35.408Z">
+<meta property="og:updated_time" content="2018-10-20T11:18:57.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Treap学习笔记">
-<meta name="twitter:description" content="1. 二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
+<meta name="twitter:description" content="二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。">
 <meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fwaf6vk9vrj30kz0bajrj.jpg">
 
 
@@ -429,7 +429,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  605 字
+                  898 字
                 </span>
               
 
@@ -445,7 +445,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -466,7 +466,7 @@
       
 
       
-        <h1 id="1-二叉排序树"><a href="#1-二叉排序树" class="headerlink" title="1. 二叉排序树"></a>1. 二叉排序树</h1><p>二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。</p>
+        <h1 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h1><p>二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。</p>
 <a id="more"></a>
 <p>BST的用法就是实现一个集合，支持<code>insert</code>，<code>erase</code>以及<code>find</code>（或<code>count</code>）操作。</p>
 <p>其中查找珂以使用递归执行。假设要查找的元素为$x$，如果$x$比根节点小，则递归左子树，否则递归右子树。如果根节点与$x$相等，直接返回<code>true</code>即可，以此类推。</p>
@@ -482,7 +482,7 @@
 <p>可是，该什么时候旋转呢？</p>
 <p>这就是<code>Treap</code>的作用啦！</p>
 <hr>
-<h1 id="2-用Treap实现STL中的set"><a href="#2-用Treap实现STL中的set" class="headerlink" title="2.用Treap实现STL中的set"></a>2.用Treap实现STL中的set</h1><p>Treap就是一棵拥有键值、优先级两种权值的树。用键值来看，这棵树是BST；用优先级来看，这棵树是堆。</p>
+<h1 id="用Treap实现STL中的set"><a href="#用Treap实现STL中的set" class="headerlink" title="用Treap实现STL中的set"></a>用Treap实现STL中的set</h1><p>Treap就是一棵拥有键值、优先级两种权值的树。用键值来看，这棵树是BST；用优先级来看，这棵树是堆。</p>
 <p>每个节点的优先级都是随机定义的以维护平衡。维护平衡的方式就是上面讲的旋转。</p>
 <p><del>总觉得代码里出现随机数很爽有木有</del></p>
 <p>Treap节点的定义如下：</p>
@@ -493,8 +493,16 @@
 <p>旋转可以形象地理解为把一个节点提起来，然后它的左（或右）子树就会掉下来。</p>
 <p>下面是插入，与BST类似，唯一的不同就是旋转维持平衡。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在以o为根的子树里插入键值x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Node* &amp;o,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(o==<span class="literal">NULL</span>)o=<span class="keyword">new</span> Node(x);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">int</span> d=o-&gt;cmp(x);</span><br><span class="line">        insert(o-&gt;ch[d],x);<span class="keyword">if</span>(o-&gt;ch[d]-&gt;r&gt;o-&gt;r)rotate(o,d^<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面是删除：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(Node* &amp;o,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> d=o-&gt;cmp(x);</span><br><span class="line">    <span class="keyword">if</span>(d==<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(o-&gt;ch[<span class="number">0</span>]==<span class="literal">NULL</span>)o=o-&gt;ch[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(o-&gt;ch[<span class="number">1</span>]==<span class="literal">NULL</span>)o=o-&gt;ch[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> d2=(o-&gt;ch[<span class="number">0</span>]-&gt;r&gt;o-&gt;ch[<span class="number">1</span>]-&gt;r?<span class="number">1</span>:<span class="number">0</span>);</span><br><span class="line">            rotate(o,d2);remove(o-&gt;ch[d2],x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        remove(o-&gt;ch[d],x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，上述代码可能会出现“待插入值已经存在”或“待删除值不存在”的情况，所以调用函数前要进行一次查找：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(Node* o,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(o!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> d=o-&gt;cmp(x);</span><br><span class="line">        <span class="keyword">if</span>(d==<span class="number">-1</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> o=o-&gt;ch[d];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可是如果Treap只能用来实现set，那我们学它干啥呢？因为有些用Treap可以实现的功能set实现不了，比如求名次、求第k小。</p>
 <hr>
-<h1 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h1><p>Treap还没有写删除和查找qwq</p>
+<h1 id="用Treap实现名次树"><a href="#用Treap实现名次树" class="headerlink" title="用Treap实现名次树"></a>用Treap实现名次树</h1><p>方法：给节点新增一个成员变量s，表示以它为根的子树的总结点数，然后编写一个maintain函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">maintain</span><span class="params">()</span></span>&#123;</span><br><span class="line">    s=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(ch[<span class="number">0</span>]!=<span class="literal">NULL</span>)s+=ch[<span class="number">0</span>]-&gt;s;</span><br><span class="line">    <span class="keyword">if</span>(ch[<span class="number">1</span>]!=<span class="literal">NULL</span>)s+=ch[<span class="number">1</span>]-&gt;s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后每个操作后都加入maintain函数即可。</p>
+<p>然后求第k大的值以及rank应该已经很好实现了。</p>
 
       
     </div>
@@ -514,7 +522,7 @@
   <p><span>本文标题:</span><a href="/Treap学习笔记/">Treap学习笔记</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 henrytb 的个人博客">henrytb</a></p>
   <p><span>发布时间:</span>2018年10月16日 - 21:10</p>
-  <p><span>最后更新:</span>2018年10月19日 - 21:10</p>
+  <p><span>最后更新:</span>2018年10月20日 - 19:10</p>
   <p><span>原始链接:</span><a href="/Treap学习笔记/" title="Treap学习笔记">https://henrytbtrue.github.io/Treap学习笔记/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://henrytbtrue.github.io/Treap学习笔记/"  aria-label="复制成功！"></i></span>
   </p>
@@ -776,7 +784,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-二叉排序树"><span class="nav-number">1.</span> <span class="nav-text">1. 二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-用Treap实现STL中的set"><span class="nav-number">2.</span> <span class="nav-text">2.用Treap实现STL中的set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续…"><span class="nav-number">3.</span> <span class="nav-text">未完待续…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉排序树"><span class="nav-number">1.</span> <span class="nav-text">二叉排序树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用Treap实现STL中的set"><span class="nav-number">2.</span> <span class="nav-text">用Treap实现STL中的set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用Treap实现名次树"><span class="nav-number">3.</span> <span class="nav-text">用Treap实现名次树</span></a></li></ol></div>
             
 
           </div>
@@ -1444,15 +1452,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":200},"mobile":{"show":false},"log":false,"tagMode":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1469,5 +1469,13 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":100,"height":200},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 </html>
