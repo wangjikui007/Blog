@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Treap学习笔记]]></title>
-    <url>%2FTreap%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[二叉排序树二叉排序树（Binary Search Tree，BST）就是中序遍历为正序的树。 BST的用法就是实现一个集合，支持insert，erase以及find（或count）操作。 其中查找珂以使用递归执行。假设要查找的元素为$x$，如果$x$比根节点小，则递归左子树，否则递归右子树。如果根节点与$x$相等，直接返回true即可，以此类推。 插入过程类似，只是如果二叉搜索树里已经有这个元素，插入失败（集合内不能有相同元素）。 可是同样的节点集合，可以构造出很多不同的BST，导致最坏时一棵二叉排序树可能会变成一条链！这个时间复杂度是不能接受的。 那如何维持BST的平衡？ 旋转！ 旋转操作如图： （自己画的，勿喷） 可是，该什么时候旋转呢？ 这就是Treap的作用啦！ 用Treap实现STL中的setTreap就是一棵拥有键值、优先级两种权值的树。用键值来看，这棵树是BST；用优先级来看，这棵树是堆。 每个节点的优先级都是随机定义的以维护平衡。维护平衡的方式就是上面讲的旋转。 总觉得代码里出现随机数很爽有木有 Treap节点的定义如下： 12345678910struct Node&#123; Node* ch[2]; //左右子树 int r; //优先级 int v; //键值 Node(int v):v(v)&#123;ch[0]=ch[1]=NULL;r=rand();&#125; int cmp(int x)const&#123; if(x==v)return -1; return x&lt;v?0:1; &#125;&#125;; 下面是旋转的代码： 1234//d=0表示左旋，d=1表示右旋void rotate(Node* &amp;o,int d)&#123; Node* k=o-&gt;ch[d^1];o-&gt;ch[d^1]=k-&gt;ch[d];k-&gt;ch[d]=o;o=k;&#125; 由于d等于0或1，d^1在d=0时就是1，d=1时就是0，因为速度快就这样写了。 旋转可以形象地理解为把一个节点提起来，然后它的左（或右）子树就会掉下来。 下面是插入，与BST类似，唯一的不同就是旋转维持平衡。 12345678//在以o为根的子树里插入键值xvoid insert(Node* &amp;o,int x)&#123; if(o==NULL)o=new Node(x); else&#123; int d=o-&gt;cmp(x); insert(o-&gt;ch[d],x);if(o-&gt;ch[d]-&gt;r&gt;o-&gt;r)rotate(o,d^1); &#125;&#125; 下面是删除： 1234567891011121314void remove(Node* &amp;o,int x)&#123; int d=o-&gt;cmp(x); if(d==-1)&#123; if(o-&gt;ch[0]==NULL)o=o-&gt;ch[1]; else if(o-&gt;ch[1]==NULL)o=o-&gt;ch[0]; else&#123; int d2=(o-&gt;ch[0]-&gt;r&gt;o-&gt;ch[1]-&gt;r?1:0); rotate(o,d2);remove(o-&gt;ch[d2],x); &#125; &#125; else&#123; remove(o-&gt;ch[d],x); &#125;&#125; 但是，上述代码可能会出现“待插入值已经存在”或“待删除值不存在”的情况，所以调用函数前要进行一次查找： 12345678bool find(Node* o,int x)&#123; while(o!=NULL)&#123; int d=o-&gt;cmp(x); if(d==-1)return true; else o=o-&gt;ch[d]; &#125; return 0;&#125; 可是如果Treap只能用来实现set，那我们学它干啥呢？因为有些用Treap可以实现的功能set实现不了，比如求名次、求第k小。 用Treap实现名次树方法：给节点新增一个成员变量s，表示以它为根的子树的总结点数，然后编写一个maintain函数： 12345void maintain()&#123; s=1; if(ch[0]!=NULL)s+=ch[0]-&gt;s; if(ch[1]!=NULL)s+=ch[1]-&gt;s;&#125; 然后每个操作后都加入maintain函数即可。 然后求第k大的值以及rank应该已经很好实现了。]]></content>
+    <title><![CDATA[ZROI 2019.1.6. 线段树]]></title>
+    <url>%2FZROI-2019-1-6-%E7%BA%BF%E6%AE%B5%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[线段树 现在给你一个长度为$n$的序列$a$，和$m$个询问，每个询问给出两个参数$x_i,y_i$，你需要回答序列前$x_i$个数中$\leq y_i$的数有多少个。 离线做法： 将$x_i$排序，依次加点。 强制在线？ emm… 暴力：维护n个线段树，每个线段树都存考虑了$[1,i]$个元素的权值线段树。 $MLE$？ 使用主席树！ 123456789101112131415161718192021222324//求一段区间和的主席树int tmp=0;struct node&#123; int l,r,sum;&#125;tr[N];int rt[N];//建树操作void insert(int x,int &amp;p,int l,int r,int pos)&#123; p=++tmp; tr[p].l=tr[x].l; tr[p].r=tr[x].r; if(l==r)&#123; tr[p].sum=1; return; &#125; int mid=(l+r)/2; if(pos&lt;=mid)insert(tr[x].l,tr[p].l,l,mid,pos); else insert(tr[x].r,tr[p].r,mid+1,pos);&#125;int main()&#123; insert(rt[0],rt[1],1,n,a[1]);//初始建树 insert(rt[i-1],rt[i],1,n,a[i]);//建第i棵树 return 0;&#125;]]></content>
       <categories>
         <category>OI笔记</category>
-        <category>自学</category>
+        <category>ZROI</category>
       </categories>
       <tags>
+        <tag>ZROI</tag>
         <tag>笔记</tag>
-        <tag>自学</tag>
       </tags>
   </entry>
   <entry>
@@ -52,8 +52,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -65,8 +65,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -78,8 +78,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -91,8 +91,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -127,8 +127,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -140,8 +140,8 @@
         <category>ZROI</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>ZROI</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
